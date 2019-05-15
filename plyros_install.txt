@@ -1,0 +1,35 @@
+#################### Plyros installation document ####################
+
+Plyros is a code written in Python, so we need at least the version 3.5
+- sudo apt-get install python3
+
+It needs several modules to run properly. To simplify their installation we advice to install "pip", for python:
+- sudo apt-get install python-pip
+
+If for any reasons you couldn't run "python3", you can try to install a virtual environment:
+- sudo pip install virtualenv
+
+Now set the path of virtualenv to your desired directory:
+- mkdir PLYENV
+It will create a folder in the current directory with the name 'PLYENV'
+
+Set the path of virtualenv to the created(desired) directory:
+- sudo virtualenv -p python3 PLYENV
+
+Activate the virtualenv:
+- source $HOME/PLYENV/bin/activate
+To deactivate:
+- deactivate
+
+Then to install the various modules:
+- sudo pip install scipy
+- sudo pip install numpy
+- sudo pip install matplotlib
+- sudo pip install requests
+- sudo pip install astropy
+- sudo pip install PyMySQL
+- sudo pip install lxml
+- sudo pip install pygcn
+- sudo pip install healpy
+
+
