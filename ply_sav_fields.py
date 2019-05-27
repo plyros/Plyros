@@ -6,21 +6,22 @@ Choose your fields format to be saved
 # Python xml libraries
 from lxml import etree
 
-def sav(fields,sitename,location): #xml format
+def sav(fields,sitename): #xml format
     #Main tree
-    coord = etree.Element("coord")
+    field = etree.Element("field")
     #Sub tree Roots
-    ra = etree.SubElement(coord, "ra")
-    ra.text = fields["ra"]
-    dec = etree.SubElement(coord, "dec")
-    dec.text = fields["dec"]
-    frame = etree.SubElement(coord, "frame")
-    frame.text = fields["frame"]
-    loc = etree.SubElement(coord, "location")
-    loc.text = location
+    for i in range(len(fields)):
+        index = etree.SubElement(field, "index")
+        index.text = str(i)
+        proba = etree.SubElement(index, "proba")
+        proba.text = str(fields["proba"][i])
+        coords = etree.SubElement(index, "coords")
+        coords.text = str(fields["coords"][i])
+        obser = etree.SubElement(index, "observability")
+        obser.text = str(fields["observability"][i])
 
     file = open("ply_sav_fields_"+sitename+".xml", "w", encoding='UTF-8')
-    file.write(str(etree.tostring(coord, pretty_print = True)))
+    file.write(str(etree.tostring(field, pretty_print = True)))
 
     file.close()
 
